@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+:root {
+  --background: #00111c;
+  --foreground: #e5e1e6;
+
+  /* Stitch "Cognitive Nexus" tokens */
+  --dark-sky: #00111c;
+  --dark-sky-inner: #0b1e3b;
+  --mesh-glow: #0a72f3;
+  --primary: #aec6ff;
+  --primary-deep: #0a72f3;
+  --secondary-cyan: #00c9fc;
+  --surface-glass: rgba(255, 255, 255, 0.03);
+  --border-glass: rgba(255, 255, 255, 0.1);
+  --on-surface: #e5e1e6;
+  --on-surface-variant: #c1c6d7;
+
+  /* Dashboard (Phase 2) — light theme surface */
+  --dashboard-surface: #ffffff;
+  --dashboard-text: #0b1220;
+  --dashboard-muted: #5b6478;
+  --dashboard-track: #e6ebf2;
+
+  /* Brand gradients */
+  --neon-blue-from: var(--secondary-cyan);
+  --neon-blue-to: var(--primary-deep);
+  --neon-blue-gradient: linear-gradient(90deg, var(--secondary-cyan) 0%, var(--primary-deep) 100%);
+  --headline-gradient: linear-gradient(135deg, #aec6ff 0%, #0a72f3 100%);
+
+  /* Legacy / state */
+  --error: #ef4444;
+  --error-border: #f87171;
+  --gray-subcard: #f3f4f6;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-dark-sky: var(--dark-sky);
+  --color-mesh-glow: var(--mesh-glow);
+  --color-primary: var(--primary);
+  --color-primary-deep: var(--primary-deep);
+  --color-secondary-cyan: var(--secondary-cyan);
+  --color-surface-glass: var(--surface-glass);
+  --color-border-glass: var(--border-glass);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-dashboard-surface: var(--dashboard-surface);
+  --color-dashboard-text: var(--dashboard-text);
+  --color-dashboard-muted: var(--dashboard-muted);
+  --color-dashboard-track: var(--dashboard-track);
+  --color-error: var(--error);
+  --color-error-border: var(--error-border);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), Inter, system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-family: var(--font-display), "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "liga";
+}
+
+.headline-gradient {
+  background: var(--headline-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* DOM-based starfield (matches Stitch code.html) */
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: twinkle var(--duration) infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.glass-card {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.accent-glow-btn {
+  box-shadow: 0 0 20px rgba(10, 114, 243, 0.3);
+  transition: all 0.3s ease;
+}
+.accent-glow-btn:hover {
+  box-shadow: 0 0 35px rgba(10, 114, 243, 0.5);
+  transform: scale(1.02);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reduced-motion-pause,
+  .reduced-motion-pause * {
+    animation: none !important;
+    transition: none !important;
+  }
+  .accent-glow-btn:hover {
+    transform: none;
+  }
+  .confetti-particle {
+    display: none !important;
+  }
+}
+
+/* Phase 3 — congratulations confetti */
+.confetti-particle {
+  position: absolute;
+  top: 0;
+  width: 8px;
+  height: 14px;
+  border-radius: 2px;
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: confetti-burst var(--duration, 2s) ease-out forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes confetti-burst {
+  0% {
+    transform: translate3d(0, -20px, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--dx, 0px), var(--dy, 600px), 0)
+      rotate(var(--rot, 720deg));
+    opacity: 0;
+  }
+}
