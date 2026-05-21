@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Wordmark } from "@/components/chrome/Wordmark";
 import { UpdatePasswordForm } from "@/components/auth/UpdatePasswordForm";
@@ -13,7 +13,7 @@ export default async function UpdatePasswordPage() {
 
   return (
     <div
-      className="relative flex min-h-screen flex-col"
+      className="relative flex min-h-[100dvh] flex-col"
       style={{ background: "var(--dark-sky)" }}
     >
       <header className="px-6 py-5 sm:px-10">

@@ -48,7 +48,7 @@ export default async function ConfirmPage({
   const { token_hash = "", type = "", next = "/update-password" } = await searchParams;
 
   return (
-    <main className="flex min-h-screen items-center justify-center px-4">
+    <main className="flex min-h-[100dvh] items-center justify-center px-4">
       <div className="glass-card w-full max-w-md rounded-2xl p-8 text-center">
         <h1 className="mb-3 text-2xl font-semibold text-white">
           Confirm password reset

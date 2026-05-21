@@ -1,11 +1,11 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { Wordmark } from "@/components/chrome/Wordmark";
 import { ResetPasswordForm } from "@/components/auth/ResetPasswordForm";
 
 export default function ResetPasswordPage() {
   return (
     <div
-      className="relative flex min-h-screen flex-col"
+      className="relative flex min-h-[100dvh] flex-col"
       style={{ background: "var(--dark-sky)" }}
     >
       <header className="px-6 py-5 sm:px-10">
@@ -32,7 +32,7 @@ export default function ResetPasswordPage() {
             >
               Back to sign in
             </Link>
-            <span aria-hidden>·</span>
+            <span aria-hidden>Â·</span>
             <Link
               href="/signup"
               className="underline"

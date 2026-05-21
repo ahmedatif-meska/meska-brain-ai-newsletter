@@ -1,4 +1,4 @@
-import { StarField } from "@/components/background/StarField";
+﻿import { StarField } from "@/components/background/StarField";
 import { AuthCard } from "@/components/auth/AuthCard";
 import { SignupForm } from "@/components/auth/SignupForm";
 import { Wordmark } from "@/components/chrome/Wordmark";
@@ -25,7 +25,7 @@ export default function SignupPage() {
       </nav>
 
       {/* Main Hero */}
-      <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pb-12 pt-24 sm:px-16">
+      <main className="relative flex min-h-[100dvh] flex-col items-center justify-center overflow-hidden px-4 pb-12 pt-24 sm:px-16">
         {/* Background Ambient Glow */}
         <div
           aria-hidden

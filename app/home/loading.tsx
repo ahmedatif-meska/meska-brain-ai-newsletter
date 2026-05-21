@@ -1,8 +1,8 @@
-import { DashboardNav } from "@/components/dashboard/DashboardNav";
+﻿import { DashboardNav } from "@/components/dashboard/DashboardNav";
 
 export default function Loading() {
   return (
-    <div className="min-h-screen" style={{ background: "var(--dashboard-surface)" }}>
+    <div className="min-h-[100dvh]" style={{ background: "var(--dashboard-surface)" }}>
       <DashboardNav active="home" />
       <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-10">
         <div className="space-y-6 animate-pulse">

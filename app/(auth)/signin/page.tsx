@@ -1,4 +1,4 @@
-import { StarField } from "@/components/background/StarField";
+﻿import { StarField } from "@/components/background/StarField";
 import { AuthCard } from "@/components/auth/AuthCard";
 import { SignInForm } from "@/components/auth/SignInForm";
 import { Wordmark } from "@/components/chrome/Wordmark";
@@ -21,7 +21,7 @@ export default async function SignInPage({
       : signedup === "1"
         ? "Account created. Sign in to continue."
         : reason === "existing"
-          ? "This email is already registered — sign in instead."
+          ? "This email is already registered â€” sign in instead."
           : reason === "reset_failed"
             ? "That reset link is invalid or has expired. Request a new one."
             : undefined;
@@ -45,7 +45,7 @@ export default async function SignInPage({
         <div className="hidden items-center gap-8 text-base md:flex" />
       </nav>
 
-      <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pb-12 pt-24 sm:px-16">
+      <main className="relative flex min-h-[100dvh] flex-col items-center justify-center overflow-hidden px-4 pb-12 pt-24 sm:px-16">
         <div
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"

@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+﻿import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { DashboardNav } from "@/components/dashboard/DashboardNav";
 import { ProfileWizard } from "./_wizard/ProfileWizard";
@@ -30,7 +30,7 @@ export default async function ProfilePage() {
 
   return (
     <div
-      className="flex min-h-screen flex-col"
+      className="flex min-h-[100dvh] flex-col"
       style={{
         background: "var(--dashboard-surface)",
         color: "var(--dashboard-text)",

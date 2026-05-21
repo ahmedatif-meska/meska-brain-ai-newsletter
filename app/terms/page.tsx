@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { Wordmark } from "@/components/chrome/Wordmark";
 
 export const metadata = {
@@ -43,7 +43,7 @@ const SECTIONS: { title: string; body: string }[] = [
 export default function TermsPage() {
   return (
     <div
-      className="relative flex min-h-screen flex-col"
+      className="relative flex min-h-[100dvh] flex-col"
       style={{ background: "var(--dark-sky)" }}
     >
       <nav
