@@ -30,7 +30,7 @@ export function Wordmark({
         width={1024}
         height={205}
         priority
-        className="h-7 w-auto sm:h-9"
+        className="h-6 w-auto sm:h-9"
       />
     </Link>
   );

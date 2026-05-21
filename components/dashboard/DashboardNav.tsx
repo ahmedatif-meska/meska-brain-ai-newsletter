@@ -7,7 +7,7 @@ type ActiveTab = "home" | "profile";
 export function DashboardNav({ active }: { active: ActiveTab }) {
   return (
     <nav
-      className="sticky top-0 z-40 flex w-full items-center gap-2 border-b px-3 py-3 sm:gap-6 sm:px-8 sm:py-4"
+      className="sticky top-0 z-40 flex w-full items-center gap-1 border-b px-2 py-3 sm:gap-6 sm:px-8 sm:py-4"
       style={{
         background: "var(--dashboard-surface)",
         borderColor: "var(--dashboard-track)",
@@ -16,7 +16,7 @@ export function DashboardNav({ active }: { active: ActiveTab }) {
     >
       <Wordmark tone="dark" href="/home" />
 
-      <div className="ml-2 flex items-center gap-1 sm:ml-4 sm:gap-2">
+      <div className="ml-1 flex items-center gap-0.5 sm:ml-4 sm:gap-2">
         <NavTab href="/home" icon="home" label="Home" active={active === "home"} />
         <NavTab href="/profile" icon="person" label="Profile" active={active === "profile"} />
       </div>
@@ -42,7 +42,7 @@ function NavTab({
     <Link
       href={href}
       aria-current={active ? "page" : undefined}
-      className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-2 text-xs font-semibold transition-colors sm:px-4 sm:text-sm"
+      className="inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-2 text-[11px] font-semibold transition-colors sm:gap-1.5 sm:px-4 sm:text-sm"
       style={{
         color: active ? "var(--primary-deep)" : "var(--dashboard-muted)",
         background: active ? "rgba(10, 114, 243, 0.08)" : "transparent",
