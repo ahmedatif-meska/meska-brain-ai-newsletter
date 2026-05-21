@@ -37,7 +37,7 @@ export default async function HomePage() {
 
   return (
     <div
-      className="flex flex-1 flex-col"
+      className="flex w-full min-w-0 max-w-full flex-1 flex-col overflow-x-hidden"
       style={{ background: "var(--dashboard-surface)", color: "var(--dashboard-text)" }}
     >
       <DashboardNav active="home" />
