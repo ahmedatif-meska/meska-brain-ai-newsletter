@@ -83,14 +83,21 @@ img, video {
   font-weight: normal;
   font-style: normal;
   display: inline-block;
+  width: 1em;
+  height: 1em;
+  max-width: 1em;
+  overflow: hidden;
   line-height: 1;
   text-transform: none;
   letter-spacing: normal;
   word-wrap: normal;
   white-space: nowrap;
+  text-indent: 0;
   direction: ltr;
   -webkit-font-smoothing: antialiased;
   font-feature-settings: "liga";
+  text-rendering: optimizeLegibility;
+  flex-shrink: 0;
 }
 
 .headline-gradient {
