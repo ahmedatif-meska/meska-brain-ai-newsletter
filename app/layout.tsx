@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { headers } from "next/headers";
 import { Plus_Jakarta_Sans, Inter, Carlito } from "next/font/google";
 import "./globals.css";
 
@@ -25,11 +26,20 @@ export const metadata: Metadata = {
   description: "AI-hyperpersonalized news, delivered where you already are.",
 };
 
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  viewportFit: "cover",
-};
+export async function generateViewport(): Promise<Viewport> {
+  const headersList = await headers();
+  const userAgent = headersList.get("user-agent") ?? "";
+  const isMobile =
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|Tablet/i.test(
+      userAgent,
+    );
+
+  return {
+    width: "device-width",
+    initialScale: isMobile ? 0.9 : 1,
+    viewportFit: "cover",
+  };
+}
 
 export default function RootLayout({
   children,

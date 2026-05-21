@@ -70,8 +70,10 @@ body {
   font-family: var(--font-body), Inter, system-ui, -apple-system, sans-serif;
 }
 
-img, video {
-  max-width: 100%;
+@layer base {
+  img, video {
+    max-width: 100%;
+  }
 }
 
 .font-display {
