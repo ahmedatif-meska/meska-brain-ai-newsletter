@@ -22,7 +22,12 @@
       "Bash(git push *)",
       "Bash(gh auth *)",
       "Bash(gh repo *)",
-      "PowerShell(cmdkey *)"
+      "PowerShell(cmdkey *)",
+      "PowerShell(.specify/extensions/git/scripts/powershell/create-new-feature.ps1 -Json -ShortName \"fix-mobile-viewport-zoom\" \"Fix mobile viewport zoom causing pages to not fit 100% on mobile after signin\")",
+      "Bash(mkdir -p D:/meska-brain-ai-newsletter/specs/006-fix-mobile-viewport-zoom/checklists)",
+      "Bash(cp D:/meska-brain-ai-newsletter/.specify/templates/spec-template.md D:/meska-brain-ai-newsletter/specs/006-fix-mobile-viewport-zoom/spec.md)",
+      "PowerShell(.specify/scripts/powershell/setup-plan.ps1 -Json)",
+      "PowerShell(npx tsc --noEmit 2>&1 | Select-Object -Last 30)"
     ]
   }
 }
