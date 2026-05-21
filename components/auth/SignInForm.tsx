@@ -116,7 +116,7 @@ export function SignInForm({ initialBanner }: { initialBanner?: string }) {
                 className="text-[11px] underline"
                 style={{ color: "rgba(174, 198, 255, 0.8)" }}
               >
-                Forgot?
+                Forgot password?
               </Link>
             </div>
             <div className="relative flex items-center">
