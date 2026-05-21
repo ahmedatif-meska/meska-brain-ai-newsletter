@@ -56,11 +56,15 @@
   --font-body: var(--font-body);
 }
 
+html, body {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-body), Inter, system-ui, -apple-system, sans-serif;
-  overflow-x: hidden;
 }
 
 .font-display {

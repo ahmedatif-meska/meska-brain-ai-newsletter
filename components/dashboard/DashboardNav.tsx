@@ -7,7 +7,7 @@ type ActiveTab = "home" | "profile";
 export function DashboardNav({ active }: { active: ActiveTab }) {
   return (
     <nav
-      className="sticky top-0 z-40 flex w-full items-center gap-1 border-b px-2 py-3 sm:gap-6 sm:px-8 sm:py-4"
+      className="sticky top-0 z-40 flex w-full max-w-full items-center gap-1 overflow-hidden border-b px-2 py-3 sm:gap-6 sm:px-8 sm:py-4"
       style={{
         background: "var(--dashboard-surface)",
         borderColor: "var(--dashboard-track)",
