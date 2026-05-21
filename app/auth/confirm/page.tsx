@@ -15,14 +15,26 @@ async function verifyAction(formData: FormData) {
   const type = String(formData.get("type") ?? "") as EmailOtpType;
   const next = String(formData.get("next") ?? "/update-password");
 
+  console.log("[auth/confirm] action invoked", {
+    hasTokenHash: Boolean(token_hash),
+    tokenHashLen: token_hash.length,
+    type,
+    next,
+  });
+
   if (!token_hash || !type) {
+    console.error("[auth/confirm] missing params, redirecting");
     redirect("/signin?reason=reset_failed");
   }
 
   const supabase = await createSupabaseServerClient();
-  const { error } = await supabase.auth.verifyOtp({ type, token_hash });
+  const { data, error } = await supabase.auth.verifyOtp({ type, token_hash });
+  console.log("[auth/confirm] verifyOtp result", {
+    hasSession: Boolean(data?.session),
+    hasUser: Boolean(data?.user),
+    error: error ? { message: error.message, status: error.status, code: error.code } : null,
+  });
   if (error) {
-    console.error("[auth/confirm] verifyOtp failed:", error);
     redirect("/signin?reason=reset_failed");
   }
   redirect(next);
