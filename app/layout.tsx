@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Inter, Carlito } from "next/font/google";
 import "./globals.css";
 
@@ -23,6 +23,12 @@ const carlito = Carlito({
 export const metadata: Metadata = {
   title: "Meska Brain | Login",
   description: "AI-hyperpersonalized news, delivered where you already are.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
