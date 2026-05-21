@@ -3,7 +3,7 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 <!-- SPECKIT START -->
-Active plan: specs/005-vercel-deploy/plan.md
+Active plan: specs/006-fix-mobile-viewport-zoom/plan.md
 <!-- SPECKIT END -->
 
 ## Product

@@ -295,4 +295,40 @@ most common UI regression and the strictness is intentional.
 
 ---
 
+## Mobile viewport: never UA-sniff `initial-scale`
+
+**Problem**: The home dashboard rendered as if zoomed-in on iPhone — content
+overflowed the right edge and the user had to pinch-zoom out. The root cause
+was a `generateViewport()` async function in `app/layout.tsx` that read
+`User-Agent` from `next/headers` and emitted `initial-scale=0.9` for mobile
+UAs. `initial-scale` < 1 expands the effective CSS viewport (a 390 px device
+reports ~433 px), so the mobile-first layout was being rendered against a
+canvas it was never authored for, and elements like the `DashboardNav`
+labels (`hidden sm:inline`, sm = 640 px) started leaking onto the screen.
+
+**Solution**: Always export a static, UA-agnostic viewport:
+
+```ts
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+```
+
+Rules of thumb:
+- Pages must be authored mobile-first to fit ≥ 360 px natively (Principle III).
+  If you find yourself reaching for `initial-scale < 1`, you are masking
+  a layout bug, not fixing one.
+- Never set `maximum-scale=1` or `user-scalable=no` — that breaks pinch-zoom
+  and is an a11y violation.
+- Don't UA-sniff inside `generateViewport()` (or anywhere in layout) — it is
+  cache-hostile, contradicts SSR predictability, and the UA token list is
+  inconsistent across modern browsers.
+
+See `specs/006-fix-mobile-viewport-zoom/` for the full investigation and
+verification matrix.
+
+---
+
 *Next phase additions go below this divider.*

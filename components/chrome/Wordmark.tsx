@@ -34,8 +34,9 @@ export function Wordmark({
         width={1024}
         height={205}
         priority
-        className="h-6 w-auto max-w-[120px] sm:h-9 sm:max-w-[180px]"
-        sizes="(min-width: 640px) 180px, 120px"
+        className="block h-auto w-[80px] sm:w-[160px]"
+        sizes="(min-width: 640px) 160px, 80px"
+        style={{ aspectRatio: "1024 / 205" }}
       />
     </Link>
   );
