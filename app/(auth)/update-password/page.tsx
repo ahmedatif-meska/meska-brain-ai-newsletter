@@ -1,8 +1,16 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { Wordmark } from "@/components/chrome/Wordmark";
-import { ResetPasswordForm } from "@/components/auth/ResetPasswordForm";
+import { UpdatePasswordForm } from "@/components/auth/UpdatePasswordForm";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 
-export default function ResetPasswordPage() {
+export default async function UpdatePasswordPage() {
+  const supabase = await createSupabaseServerClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) {
+    redirect("/signin?reason=reset_failed");
+  }
+
   return (
     <div
       className="relative flex min-h-screen flex-col"
@@ -15,30 +23,23 @@ export default function ResetPasswordPage() {
         <div className="glass-card w-full max-w-md space-y-6 rounded-[2rem] p-6 sm:p-8">
           <div className="space-y-2 text-center">
             <h1 className="font-display text-[28px] font-semibold leading-9 text-white">
-              Reset your password
+              Choose a new password
             </h1>
             <p className="text-sm text-white/60">
-              Enter your email and we&apos;ll send you a link to set a new password.
+              Pick something at least 8 characters long. You&apos;ll sign in
+              again afterward.
             </p>
           </div>
 
-          <ResetPasswordForm />
+          <UpdatePasswordForm />
 
-          <div className="flex items-center justify-center gap-2 text-xs text-white/60">
+          <div className="text-center text-xs text-white/60">
             <Link
               href="/signin"
               className="underline"
               style={{ color: "rgba(174, 198, 255, 0.8)" }}
             >
               Back to sign in
-            </Link>
-            <span aria-hidden>·</span>
-            <Link
-              href="/signup"
-              className="underline"
-              style={{ color: "rgba(174, 198, 255, 0.8)" }}
-            >
-              Create account
             </Link>
           </div>
         </div>

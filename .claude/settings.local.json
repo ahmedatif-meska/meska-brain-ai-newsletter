@@ -18,7 +18,11 @@
       "PowerShell(& \"D:\\\\meska-brain-ai-newsletter\\\\.specify\\\\scripts\\\\powershell\\\\setup-plan.ps1\" -Json)",
       "PowerShell(& \"D:\\\\meska-brain-ai-newsletter\\\\.specify\\\\scripts\\\\powershell\\\\setup-tasks.ps1\" -Json)",
       "PowerShell(& \"D:\\\\meska-brain-ai-newsletter\\\\.specify\\\\scripts\\\\powershell\\\\check-prerequisites.ps1\" -Json -RequireTasks -IncludeTasks)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(git push *)",
+      "Bash(gh auth *)",
+      "Bash(gh repo *)",
+      "PowerShell(cmdkey *)"
     ]
   }
 }

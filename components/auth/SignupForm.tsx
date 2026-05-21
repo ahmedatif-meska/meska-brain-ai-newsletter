@@ -182,13 +182,22 @@ export function SignupForm() {
           </div>
 
           <div className="space-y-2">
-            <label
-              htmlFor="password"
-              className="block px-4 text-left text-xs font-semibold uppercase tracking-wider text-white/80"
-            >
-              Password <span className="text-red-400" aria-hidden>*</span>
-              <span className="sr-only">(required)</span>
-            </label>
+            <div className="flex items-center justify-between px-4">
+              <label
+                htmlFor="password"
+                className="text-left text-xs font-semibold uppercase tracking-wider text-white/80"
+              >
+                Password <span className="text-red-400" aria-hidden>*</span>
+                <span className="sr-only">(required)</span>
+              </label>
+              <Link
+                href="/reset-password"
+                className="text-[11px] underline"
+                style={{ color: "rgba(174, 198, 255, 0.8)" }}
+              >
+                Forgot?
+              </Link>
+            </div>
             <div className="relative flex items-center">
               <span
                 className="material-symbols-outlined pointer-events-none absolute left-4 text-white/60"

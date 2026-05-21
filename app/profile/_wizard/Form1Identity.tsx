@@ -101,14 +101,22 @@ export function Form1Identity({
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const whatsapp = `${waCode}${waRest.replace(/[^\d]/g, "")}`;
+    const waDigits = waRest.replace(/\D/g, "");
+    const whatsapp = `${waCode}${waDigits}`;
     const errs: WizardFieldError[] = [];
     const fnErr = validateName(firstName, "firstName", "First name");
     if (fnErr) errs.push({ field: "firstName", message: fnErr.message });
     const lnErr = validateName(lastName, "lastName", "Last name");
     if (lnErr) errs.push({ field: "lastName", message: lnErr.message });
-    const waErr = validateWhatsappE164(whatsapp);
-    if (waErr) errs.push(waErr);
+    if (waDigits.length !== 10) {
+      errs.push({
+        field: "whatsapp",
+        message: "WhatsApp number must be exactly 10 digits.",
+      });
+    } else {
+      const waErr = validateWhatsappE164(whatsapp);
+      if (waErr) errs.push(waErr);
+    }
     if (!referralSource) {
       errs.push({ field: "referralSource", message: "Please select how you heard about us." });
     } else if (!REFERRAL_SET.has(referralSource)) {
@@ -193,8 +201,31 @@ export function Form1Identity({
               </select>
               <input
                 type="tel"
+                inputMode="numeric"
+                pattern="\d{10}"
+                maxLength={10}
                 value={waRest}
-                onChange={(e) => setWaRest(e.target.value)}
+                onChange={(e) =>
+                  setWaRest(e.target.value.replace(/\D/g, "").slice(0, 10))
+                }
+                onKeyDown={(e) => {
+                  if (
+                    e.key.length === 1 &&
+                    !/\d/.test(e.key) &&
+                    !e.ctrlKey &&
+                    !e.metaKey
+                  ) {
+                    e.preventDefault();
+                  }
+                }}
+                onPaste={(e) => {
+                  e.preventDefault();
+                  const digits = e.clipboardData
+                    .getData("text")
+                    .replace(/\D/g, "")
+                    .slice(0, 10);
+                  setWaRest(digits);
+                }}
                 placeholder="1001234567"
                 autoComplete="tel-national"
                 className={INPUT_BASE + " w-full flex-1 min-w-0"}

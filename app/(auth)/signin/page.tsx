@@ -3,20 +3,28 @@ import { AuthCard } from "@/components/auth/AuthCard";
 import { SignInForm } from "@/components/auth/SignInForm";
 import { Wordmark } from "@/components/chrome/Wordmark";
 
-type SearchParams = Promise<{ reason?: string; signedup?: string }>;
+type SearchParams = Promise<{
+  reason?: string;
+  signedup?: string;
+  pwreset?: string;
+}>;
 
 export default async function SignInPage({
   searchParams,
 }: {
   searchParams: SearchParams;
 }) {
-  const { reason, signedup } = await searchParams;
+  const { reason, signedup, pwreset } = await searchParams;
   const banner =
-    signedup === "1"
-      ? "Account created. Sign in to continue."
-      : reason === "existing"
-        ? "This email is already registered — sign in instead."
-        : undefined;
+    pwreset === "1"
+      ? "Password updated. Sign in with your new password."
+      : signedup === "1"
+        ? "Account created. Sign in to continue."
+        : reason === "existing"
+          ? "This email is already registered — sign in instead."
+          : reason === "reset_failed"
+            ? "That reset link is invalid or has expired. Request a new one."
+            : undefined;
 
   return (
     <>
