@@ -29,26 +29,28 @@ export default async function ProfilePage() {
     (user.user_metadata?.last_name as string | undefined) ?? "";
 
   return (
-    <div
-      className="flex min-h-[100dvh] flex-col"
-      style={{
-        background: "var(--dashboard-surface)",
-        color: "var(--dashboard-text)",
-      }}
-    >
+    <>
       <DashboardNav active="profile" />
 
-      <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col px-4 pb-16 pt-10 sm:px-6 sm:pt-12">
-        <ProfileWizard
-          firstNameDefault={firstNameDefault}
-          lastNameDefault={lastNameDefault}
-          initial={{
-            identity: (identityRes.data ?? null) as ProfileIdentityRow | null,
-            curation: (curationRes.data ?? null) as ProfileCurationRow | null,
-            finalize: (finalizeRes.data ?? null) as ProfileFinalizeRow | null,
-          }}
-        />
+      <main
+        className="relative flex min-h-[100dvh] flex-1 flex-col items-center overflow-hidden px-4 pb-12 pt-10 sm:px-16 sm:pt-12"
+        style={{
+          background: "var(--dashboard-surface)",
+          color: "var(--dashboard-text)",
+        }}
+      >
+        <div className="relative z-10 w-full max-w-2xl">
+          <ProfileWizard
+            firstNameDefault={firstNameDefault}
+            lastNameDefault={lastNameDefault}
+            initial={{
+              identity: (identityRes.data ?? null) as ProfileIdentityRow | null,
+              curation: (curationRes.data ?? null) as ProfileCurationRow | null,
+              finalize: (finalizeRes.data ?? null) as ProfileFinalizeRow | null,
+            }}
+          />
+        </div>
       </main>
-    </div>
+    </>
   );
 }
