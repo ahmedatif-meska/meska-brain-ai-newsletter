@@ -23,14 +23,19 @@ export function Wordmark({
     );
   }
   return (
-    <Link href={href} className="inline-flex items-center" aria-label="Meska Brain">
+    <Link
+      href={href}
+      className="inline-flex shrink-0 items-center"
+      aria-label="Meska Brain"
+    >
       <Image
         src="/meska-logo.png"
         alt="Meska Brain"
         width={1024}
         height={205}
         priority
-        className="h-6 w-auto sm:h-9"
+        className="h-6 w-auto max-w-[120px] sm:h-9 sm:max-w-[180px]"
+        sizes="(min-width: 640px) 180px, 120px"
       />
     </Link>
   );
