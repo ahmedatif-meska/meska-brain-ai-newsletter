@@ -8,7 +8,7 @@ export function SignOutButton() {
       <button
         type="submit"
         aria-label="Sign out"
-        className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-xs font-semibold text-white shadow-lg transition-all hover:brightness-110 active:scale-95 sm:px-4 sm:text-sm"
+        className="inline-flex items-center gap-2 rounded-full p-2 text-xs font-semibold text-white shadow-lg transition-all hover:brightness-110 active:scale-95 sm:px-4 sm:py-2 sm:text-sm"
         style={{
           background: "var(--neon-blue-gradient)",
         }}

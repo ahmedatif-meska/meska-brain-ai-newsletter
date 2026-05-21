@@ -42,7 +42,7 @@ export default async function HomePage() {
     >
       <DashboardNav active="home" />
 
-      <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center px-4 pb-16 pt-12 sm:px-6 sm:pt-16">
+      <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center overflow-x-hidden px-4 pb-16 pt-12 sm:px-6 sm:pt-16">
         <h1
           className="w-full font-display font-semibold tracking-tight"
           style={{
